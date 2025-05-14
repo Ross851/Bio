@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ross Hastie - Professional Bio</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f5f5f5;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 60px 20px;
+        }
+
+        .bio-card {
+            background: #fff;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .bio-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 6px;
+            background: linear-gradient(90deg, #0078D4 0%, #00BCF2 100%);
+        }
+
+        /* Photo Styles */
+        .profile-photo {
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            margin: 0 auto 30px;
+            display: block;
+            object-fit: cover;
+            object-position: center top;
+            border: 4px solid #fff;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        .photo-container {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        /* Tab Navigation */
+        .tab-navigation {
+            display: flex;
+            background: #f8f9fa;
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        .tab-button {
+            flex: 1;
+            padding: 20px;
+            background: none;
+            border: none;
+            font-size: 1.1rem;
+            font-weight: 500;
+            color: #666;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .tab-button.active {
+            color: #0078D4;
+            background: #fff;
+        }
+
+        .tab-button.active::after {
+            content: '';
+            position: absolute;
+            bottom: -1px;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: #0078D4;
+        }
+
+        .tab-button:hover {
+            background: #f0f0f0;
+        }
+
+        .tab-button.active:hover {
+            background: #fff;
+        }
+
+        /* Tab Content */
+        .tab-content {
+            display: none;
+            padding: 50px;
+            animation: fadeIn 0.3s ease;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Short Bio Styles */
+        .short-bio {
+            text-align: center;
+        }
+
+        .short-bio h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #1a1a1a;
+            margin-bottom: 10px;
+            letter-spacing: -0.02em;
+        }
+
+        .short-bio .tagline {
+            font-size: 1.2rem;
+            color: #666;
+            margin-bottom: 30px;
+            font-weight: 400;
+        }
+
+        .short-bio p {
+            font-size: 1.15rem;
+            color: #4a4a4a;
+            line-height: 1.8;
+            margin-bottom: 20px;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .short-bio .highlight-box {
+            background: #f0f8ff;
+            border-left: 4px solid #0078D4;
+            padding: 20px;
+            margin: 30px auto;
+            max-width: 600px;
+            font-size: 1.1rem;
+            font-weight: 500;
+            color: #0056b3;
+        }
+
+        /* Full Bio Styles */
+        .full-bio h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #1a1a1a;
+            margin-bottom: 10px;
+            letter-spacing: -0.02em;
+        }
+
+        .full-bio .tagline {
+            font-size: 1.2rem;
+            color: #666;
+            margin-bottom: 40px;
+            font-weight: 400;
+        }
+
+        .full-bio p {
+            margin-bottom: 20px;
+            color: #4a4a4a;
+            font-size: 1.1rem;
+            line-height: 1.8;
+        }
+
+        .expertise-section {
+            margin: 40px 0;
+            padding: 30px;
+            background: #f8f9fa;
+            border-radius: 8px;
+            border-left: 4px solid #0078D4;
+        }
+
+        .expertise-section h2 {
+            font-size: 1.6rem;
+            color: #1a1a1a;
+            margin-bottom: 25px;
+            font-weight: 600;
+        }
+
+        .expertise-list {
+            list-style: none;
+        }
+
+        .expertise-list li {
+            margin-bottom: 20px;
+            padding-left: 25px;
+            position: relative;
+            color: #4a4a4a;
+            font-size: 1.05rem;
+            line-height: 1.7;
+        }
+
+        .expertise-list li::before {
+            content: '▸';
+            position: absolute;
+            left: 0;
+            color: #0078D4;
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+
+        .expertise-list strong {
+            color: #1a1a1a;
+            font-weight: 600;
+        }
+
+        .closing {
+            margin-top: 40px;
+            padding: 30px;
+            background: #f0f8ff;
+            border-radius: 8px;
+            font-size: 1.15rem;
+            font-weight: 500;
+            color: #0056b3;
+            text-align: center;
+            font-style: italic;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 30px 15px;
+            }
+
+            .bio-card {
+                padding: 0;
+            }
+
+            .tab-content {
+                padding: 30px 20px;
+            }
+
+            h1 {
+                font-size: 2rem;
+            }
+
+            .tagline {
+                font-size: 1.1rem;
+            }
+
+            .expertise-section {
+                padding: 20px;
+            }
+
+            .tab-button {
+                font-size: 1rem;
+                padding: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <article class="bio-card">
+            <!-- Tab Navigation -->
+            <div class="tab-navigation">
+                <button class="tab-button active">Quick Bio</button>
+                <button class="tab-button">Full Bio</button>
+            </div>
+
+            <!-- Short Bio Tab -->
+            <div class="tab-content short-bio active" id="short-tab">
+                <div class="photo-container">
+                    <img src="ross-profile.jpg" alt="Ross Hastie" class="profile-photo">
+                </div>
+                <h1>Ross Hastie</h1>
+                <p class="tagline">Power Platform Specialist | Architect-Level Solutions | Military Precision</p>
+                
+                <p><strong>Ross Hastie</strong> transforms enterprise ambitions into working Power Platform solutions. A 22-year British Army veteran turned tech innovator, he delivers architect-level systems that navigate the reality between low-code promises and high-code necessities.</p>
+
+                <p>Currently architecting full-stack solutions for Telana (formerly Sundown Solutions), Ross specialises in complex integrations, enterprise-scale implementations, and setting realistic expectations for Power Platform projects.</p>
+
+                <div class="highlight-box">
+                    Military precision meets technical innovation—delivering solutions that actually work.
+                </div>
+            </div>
+
+            <!-- Full Bio Tab -->
+            <div class="tab-content full-bio" id="full-tab">
+                <div class="photo-container">
+                    <img src="ross-profile.jpg" alt="Ross Hastie" class="profile-photo">
+                </div>
+                <h1>Ross Hastie</h1>
+                <p class="tagline">Power Platform Specialist | Architect-Level Solutions | Military Precision</p>
+                
+                <p>Ross Hastie brings a unique blend of military leadership and comprehensive technical expertise to the technology sector. Following a distinguished 22-year career in the British Army, where he achieved the senior rank of Warrant Officer Class 2 (WO2), Ross transitioned into technology driven by his passion for creative problem-solving and building innovative solutions.</p>
+
+                <p>Currently serving as a Power Platform Specialist delivering architect-level solutions, Ross designs and implements full-stack enterprise systems for Telana (formerly Sundown Solutions). He operates well beyond traditional specialist boundaries, architecting complete solutions from strategic design through complex implementation.</p>
+
+                <section class="expertise-section">
+                    <h2>Core Expertise</h2>
+                    <ul class="expertise-list">
+                        <li><strong>End-to-End Solution Architecture:</strong> Designing scalable enterprise systems that balance low-code efficiency with high-code capability</li>
+                        <li><strong>Full-Stack Development:</strong> Power Apps (Canvas/Model-driven), Power Automate, Dataverse, custom PCF controls, Azure Functions, and API integrations</li>
+                        <li><strong>Enterprise Integration:</strong> Complex authentication flows, legacy system connectivity, and microservices architecture</li>
+                        <li><strong>Strategic Advisory:</strong> Identifying when projects require evolution from citizen to professional development approaches</li>
+                    </ul>
+                </section>
+
+                <p>Ross's military background instilled exceptional abilities in strategic planning, risk assessment, and delivering precision under pressure—skills that now define his approach to enterprise technology challenges. He excels at navigating the complexities that transform "simple" Power Platform projects into sophisticated professional development efforts.</p>
+
+                <p>His development philosophy emphasises pragmatic solutions that acknowledge real-world complexity. Ross is particularly skilled at setting realistic expectations, identifying hidden complexity early, and guiding organisations through the inevitable journey from low-code to high-code as requirements evolve.</p>
+
+                <p>Ross holds certifications in CompTIA and CMI Levels 5 and 6, complementing his technical expertise with formal management qualifications. He actively pursues continuous learning through self-directed technical studies and hands-on project experience.</p>
+
+                <p>Beyond his professional pursuits, Ross maintains an active lifestyle through golf and rowing, demonstrating the same discipline and commitment that characterises his approach to technology.</p>
+
+                <div class="closing">
+                    Ross Hastie represents a new breed of technology professional—combining hands-on technical depth with strategic architectural thinking to deliver enterprise solutions that actually work in practice, not just in theory.
+                </div>
+            </div>
+        </article>
+    </div>
+
+    <script>
+        // Function to switch between tabs
+        function switchTab(tabName, buttonElement) {
+            // Remove active class from all tabs and buttons
+            document.querySelectorAll('.tab-content').forEach(tab => {
+                tab.classList.remove('active');
+            });
+            document.querySelectorAll('.tab-button').forEach(button => {
+                button.classList.remove('active');
+            });
+            
+            // Add active class to selected tab and button
+            if (tabName === 'short') {
+                document.getElementById('short-tab').classList.add('active');
+            } else {
+                document.getElementById('full-tab').classList.add('active');
+            }
+            buttonElement.classList.add('active');
+        }
+
+        // Wait for DOM to load
+        document.addEventListener('DOMContentLoaded', function() {
+            // Get the tab buttons
+            const quickBioBtn = document.querySelector('.tab-button:first-child');
+            const fullBioBtn = document.querySelector('.tab-button:last-child');
+            
+            // Add click event listeners
+            quickBioBtn.addEventListener('click', function() {
+                switchTab('short', this);
+            });
+            
+            fullBioBtn.addEventListener('click', function() {
+                switchTab('full', this);
+            });
+        });
+    </script>
+</body>
+</html>
