@@ -273,6 +273,7 @@
             transition: all 0.3s ease;
             font-weight: 500;
             font-size: 0.95rem;
+            margin: 5px;
         }
 
         .social-links a:hover {
@@ -285,6 +286,189 @@
             width: 16px;
             height: 16px;
             fill: currentColor;
+        }
+
+        /* CV Styles */
+        .cv-content h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #1a1a1a;
+            margin-bottom: 10px;
+            letter-spacing: -0.02em;
+            text-align: center;
+        }
+
+        .cv-content .tagline {
+            font-size: 1.2rem;
+            color: #666;
+            margin-bottom: 40px;
+            font-weight: 400;
+            text-align: center;
+        }
+
+        .cv-section {
+            margin-bottom: 40px;
+        }
+
+        .cv-section h2 {
+            font-size: 1.6rem;
+            color: #0078D4;
+            margin-bottom: 20px;
+            font-weight: 600;
+            border-bottom: 2px solid #e0e0e0;
+            padding-bottom: 10px;
+        }
+
+        .cv-item {
+            margin-bottom: 25px;
+        }
+
+        .cv-item-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 10px;
+        }
+
+        .cv-item-title {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: #1a1a1a;
+        }
+
+        .cv-item-organization {
+            font-size: 1.1rem;
+            font-weight: 500;
+            color: #333;
+        }
+
+        .cv-item-date {
+            font-size: 1rem;
+            color: #666;
+            font-weight: 500;
+        }
+
+        .cv-item-description {
+            font-size: 1.05rem;
+            color: #4a4a4a;
+            line-height: 1.6;
+        }
+
+        .cv-item-achievements {
+            margin-top: 15px;
+        }
+
+        .cv-item-achievements h4 {
+            font-size: 1.05rem;
+            color: #333;
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
+
+        .cv-item-achievements ul {
+            padding-left: 20px;
+        }
+
+        .cv-item-achievements li {
+            margin-bottom: 8px;
+            font-size: 1rem;
+            color: #4a4a4a;
+            line-height: 1.5;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .skill-category {
+            background: #f8f9fa;
+            border-radius: 8px;
+            padding: 20px;
+            border-left: 3px solid #0078D4;
+        }
+
+        .skill-category h3 {
+            font-size: 1.1rem;
+            color: #1a1a1a;
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+
+        .skill-list {
+            list-style: none;
+        }
+
+        .skill-list li {
+            margin-bottom: 8px;
+            padding-left: 15px;
+            position: relative;
+            font-size: 0.95rem;
+            line-height: 1.5;
+        }
+
+        .skill-list li::before {
+            content: '•';
+            position: absolute;
+            left: 0;
+            color: #0078D4;
+            font-weight: bold;
+        }
+
+        .download-cv-btn {
+            display: inline-block;
+            margin: 30px auto;
+            padding: 12px 25px;
+            background: #0078D4;
+            color: white;
+            text-decoration: none;
+            border-radius: 30px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            font-size: 1.1rem;
+        }
+
+        .download-cv-btn:hover {
+            background: #0056b3;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .certification-badge {
+            display: inline-block;
+            padding: 6px 12px;
+            background: #f0f8ff;
+            color: #0056b3;
+            border-radius: 15px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            margin-right: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #cce5ff;
+        }
+
+        .cv-highlight {
+            background: #f0f8ff;
+            border-left: 4px solid #0078D4;
+            padding: 20px;
+            margin: 25px 0;
+            font-size: 1.05rem;
+            color: #0056b3;
+        }
+
+        .cv-summary {
+            font-size: 1.15rem;
+            line-height: 1.8;
+            color: #333;
+            margin-bottom: 30px;
+            background: #f9f9f9;
+            padding: 20px;
+            border-radius: 8px;
+            border: 1px solid #e0e0e0;
         }
 
         @media (max-width: 768px) {
@@ -316,6 +500,18 @@
                 font-size: 1rem;
                 padding: 15px;
             }
+
+            .cv-item-header {
+                flex-direction: column;
+            }
+
+            .cv-item-date {
+                margin-top: 5px;
+            }
+
+            .skills-grid {
+                grid-template-columns: 1fr;
+            }
         }
     </style>
 </head>
@@ -329,7 +525,7 @@
             </div>
 
             <!-- Short Bio Tab -->
-            <div class="tab-content short-bio active" id="short-tab">
+            <div class="tab-content short-bio active" id="tab-0">
                 <div class="photo-container">
                     <img src="ross-profile.jpg" alt="Ross Hastie" class="profile-photo">
                 </div>
@@ -365,12 +561,18 @@
                             </svg>
                             Email
                         </a>
+                        <a href="https://ross851.github.io/ProfessionalCV/" target="_blank">
+                            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M14 2H6c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6zm2 16H8v-2h8v2zm0-4H8v-2h8v2zm-3-5V3.5L18.5 9H13z"/>
+                            </svg>
+                            CV
+                        </a>
                     </div>
                 </div>
             </div>
 
             <!-- Full Bio Tab -->
-            <div class="tab-content full-bio" id="full-tab">
+            <div class="tab-content full-bio" id="tab-1">
                 <div class="photo-container">
                     <img src="ross-profile.jpg" alt="Ross Hastie" class="profile-photo">
                 </div>
@@ -425,15 +627,23 @@
                             </svg>
                             Email
                         </a>
+                        <a href="https://ross851.github.io/ProfessionalCV/" target="_blank">
+                            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M14 2H6c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6zm2 16H8v-2h8v2zm0-4H8v-2h8v2zm-3-5V3.5L18.5 9H13z"/>
+                            </svg>
+                            CV
+                        </a>
                     </div>
                 </div>
+            </div>
+
             </div>
         </article>
     </div>
 
     <script>
         // Function to switch between tabs
-        function switchTab(tabName, buttonElement) {
+        function switchTab(tabIndex) {
             // Remove active class from all tabs and buttons
             document.querySelectorAll('.tab-content').forEach(tab => {
                 tab.classList.remove('active');
@@ -443,27 +653,25 @@
             });
             
             // Add active class to selected tab and button
-            if (tabName === 'short') {
-                document.getElementById('short-tab').classList.add('active');
-            } else {
-                document.getElementById('full-tab').classList.add('active');
+            const tabs = document.querySelectorAll('.tab-content');
+            const buttons = document.querySelectorAll('.tab-button');
+            
+            if (tabIndex >= 0 && tabIndex < tabs.length) {
+                tabs[tabIndex].classList.add('active');
+                buttons[tabIndex].classList.add('active');
             }
-            buttonElement.classList.add('active');
         }
 
         // Wait for DOM to load
         document.addEventListener('DOMContentLoaded', function() {
-            // Get the tab buttons
-            const quickBioBtn = document.querySelector('.tab-button:first-child');
-            const fullBioBtn = document.querySelector('.tab-button:last-child');
+            // Get all tab buttons
+            const tabButtons = document.querySelectorAll('.tab-button');
             
-            // Add click event listeners
-            quickBioBtn.addEventListener('click', function() {
-                switchTab('short', this);
-            });
-            
-            fullBioBtn.addEventListener('click', function() {
-                switchTab('full', this);
+            // Add click event listeners to each button
+            tabButtons.forEach((button, index) => {
+                button.addEventListener('click', function() {
+                    switchTab(index);
+                });
             });
         });
     </script>
